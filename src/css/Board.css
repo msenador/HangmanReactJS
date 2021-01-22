@@ -1,0 +1,13 @@
+.boardPage{
+    display: flex;
+    justify-content: center;
+}
+
+.linesDisplay{
+    text-align: center;
+}
+
+.enterBtn{
+    display: flex;
+    justify-content: center;
+}
