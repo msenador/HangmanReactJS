@@ -1,0 +1,9 @@
+.getWordPage{
+    display: flex;
+    justify-content: center;
+}
+
+.wordSubmitBtn{
+    display: flex;
+    justify-content: center;
+}

@@ -1,29 +1,41 @@
 import React from 'react'
+import BoardLayout from './Board'
+import '../css/GetWord.css'
+import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
 class GetWord extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            secretWord: ''
+            secretWord: '',
+            splitWord: []
         }
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
-        const word = document.getElementById('secretWord').value
-        this.setState({secretWord: word})
-        console.log(this.state.secretWord)
+        e.preventDefault();
+        let split = this.state.secretWord.split('')
+        // for (let i = 0; i < split.length; i++){
+        //     this.state.splitWord.push(split[i])
+        // }
     }
 
     render(){
         return(
-            <>
-            <h1>Enter the secret word!</h1>
-            <form onSubmit={this.handleSubmit}>
-            <input onChange={(e) => {this.setState({secretWord: e.target.value})}}id="secretWord" name="secretWord" type="password"></input>
-            <button type="submit">submit</button>
-            </form>
-            </>
+            <div className="getWordPage">
+                <Router>
+                    <form onSubmit={this.handleSubmit}>
+                        <div>Enter the secret word!</div>
+                        <input onChange={(e) => {this.setState( {secretWord: e.target.value.toUpperCase().split('')})}} id="secretWord" name="secretWord" type="password">
+                        </input>
+                            <br/>
+                                <div className="wordSubmitBtn"><Link to='/Board'><button type="submit">submit</button></Link></div>
+                                <Switch>
+                                    <Route exact path='/Board'><BoardLayout split={this.state.secretWord}/></Route>
+                                </Switch>
+                    </form>
+                 </Router>
+            </div>
         )
     }
 }
