@@ -6,7 +6,7 @@ const BoardLayout = ({split}) => {
     const [letter, setLetter] = useState()
     const [wordBox, setWordBox] = useState([])
 
-    const displayWordBox = wordBox ? 
+    const displayLetterBox = wordBox ? 
     wordBox.map(item => {
         return(
             <>
@@ -14,11 +14,29 @@ const BoardLayout = ({split}) => {
             </>
         )
     }) 
-    : <div>No letters yet.</div>
+    : <div></div>
 
-    const displayLines = split.map(letter => {
+    // const displaySpaces = split.map(letter => {
+    //     return(
+    //         letter !== ' ' ? <span> _ </span> : <span> / </span> 
+    //     )
+    // })
+
+    // const tryAgain = 
+    //     split.includes(letter) ? 
+    //         <div>The letter {letter} is present!</div>
+    //         : <div>The letter {letter} is not present. Please try again.</div>
+
+    // const displayLines = split.map(letter => {
+    //     return(
+    //         letter !== ' ' ? <span> _ </span> : <span> / </span> 
+    //     )
+    // })
+
+    const displayLines = split.map(items => {
         return(
-            letter !== ' ' ? <span> _ </span> : <span> / </span> 
+            items !== ' ' ? (items === letter ? <span> {letter} </span> : <span> _ </span>) 
+            : <span> / </span> 
         )
     })
 
@@ -37,15 +55,19 @@ const BoardLayout = ({split}) => {
         <br/>
         <div>Guess a letter!</div>
         <form onSubmit={handleSubmit}>
-            <input pattern="[A-Za-z]{1}" type="text" onChange={(e) => {setLetter(e.target.value.toUpperCase())}}></input>
+            <input required pattern="[A-Za-z]{1}" type="text" onChange={(e) => {setLetter(e.target.value.toUpperCase())}}></input>
             <br/>
             <Button color="primary" type="submit">Enter</Button>
         </form>
+
         <br/>
         <div>WORD BOX:</div>
         {
-            displayWordBox
+            displayLetterBox
         }
+        {/* {
+            tryAgain
+        } */}
 
         </>
     )
