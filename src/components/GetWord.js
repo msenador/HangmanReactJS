@@ -15,10 +15,7 @@ class GetWord extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let split = this.state.secretWord.split('')
-        // for (let i = 0; i < split.length; i++){
-        //     this.state.splitWord.push(split[i])
-        // }
+        console.log(this.state.secretWord)
     }
 
     render(){
@@ -27,7 +24,7 @@ class GetWord extends React.Component{
                 <Router>
                     <form onSubmit={this.handleSubmit}>
                         <div>Enter the secret word!</div>
-                        <input onChange={(e) => {this.setState( {secretWord: e.target.value.toUpperCase().split('')})}} id="secretWord" name="secretWord" type="password">
+                        <input onChange={(e) => {e.preventDefault(); this.setState( {secretWord: e.target.value.toUpperCase().split('')})}} id="secretWord" name="secretWord" type="password">
                         </input>
                             <br/>
                                 <div className="wordSubmitBtn"><Link to='/Board'><Button color="primary" type="submit">submit</Button></Link></div>

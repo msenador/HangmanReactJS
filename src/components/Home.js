@@ -7,7 +7,7 @@ const Home = () => {
 
     return(
         <>
-        <div className="startHeader">Start a new game!</div>
+        <div data-testid='startHeader' className="startHeader">Start a new game!</div>
         {/* <Router>
             <Link to='/GetWord'><button>New Game</button></Link>
             <Switch>
