@@ -39,7 +39,7 @@ const BoardLayout = ({split}) => {
         <form onSubmit={handleSubmit}>
             <input pattern="[A-Za-z]{1}" type="text" onChange={(e) => {setLetter(e.target.value.toUpperCase())}}></input>
             <br/>
-            <button type="submit">Enter</button>
+            <Button color="primary" type="submit">Enter</Button>
         </form>
         <br/>
         <div>WORD BOX:</div>
